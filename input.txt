@@ -1,0 +1,27 @@
+{
+
+    x ,h: %; z:$;;
+    d:!;;
+    {
+    t = 1;
+    z = true;
+    input (x h d z);
+    if x LT x then
+        z = h plus h mult h div h min 5 LT 10
+    else
+        h=h min 2
+    end_else;
+    if x EQ h then
+        z = false
+    end_else;
+    for (true; x LT ~10; x EQ x )
+        output (x mult x or x);
+    for (;;)
+        output (x);
+    do while x GT 0
+        x = x min 1
+    loop;
+    output (x plus h mult h div h min 5 LT 10);
+    output(x)
+    };
+}

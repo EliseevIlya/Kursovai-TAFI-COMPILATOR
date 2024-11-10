@@ -1,0 +1,9 @@
+{
+a = 3;
+b = 3;
+    if x LT y  then
+        z = x plus 3 mult y
+    else
+        z=y min 2
+    end_else;
+}

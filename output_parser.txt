@@ -1,0 +1,125 @@
+Program
+  Operator
+    Declaration
+      Identifier: (3, 1)
+      Identifier: (3, 2)
+      Identifier: (3, 3)
+      Type: %
+  Operator
+    Declaration
+      Identifier: (3, 4)
+      Type: !
+  Operator
+    Input
+      Identifier: (3, 1)
+      Identifier: (3, 2)
+  Operator
+    Conditional
+      RelationalOperation: (2, 3)
+        Expression
+          Operand
+            Term
+              Factor
+                Identifier: (3, 1)
+        Operand
+          Term
+            Factor
+              Identifier: (3, 2)
+      Operator
+        Assignment
+          Identifier: (3, 2)
+          Expression
+            Operand
+              MultiplicativeOperation: (2, 10)
+                Term
+                  Factor
+                    Identifier: (3, 1)
+                Factor
+                  Identifier: (3, 1)
+      Operator
+        Assignment
+          Identifier: (3, 3)
+          Expression
+            Operand
+              Term
+                Factor
+                  Identifier: (3, 2)
+  Operator
+    Fixed_loop
+      RelationalOperation: (2, 3)
+        Expression
+          Operand
+            Term
+              Factor
+                Identifier: (3, 3)
+        Operand
+          Term
+            Factor
+              int: (4, 1)
+      Operator
+        Assignment
+          Identifier: (3, 4)
+          Expression
+            Operand
+              MultiplicativeOperation: (2, 11)
+                Term
+                  Factor
+                    Identifier: (3, 3)
+                Factor
+                  int: (4, 2)
+  Operator
+    Fixed_loop
+      Expression
+        Operand
+          Term
+            Factor
+              boolean: (1, 15)
+      RelationalOperation: (2, 3)
+        Expression
+          Operand
+            Term
+              Factor
+                Identifier: (3, 1)
+        Operand
+          Term
+            Factor: (2, 13)
+              Factor
+                int: (4, 3)
+      RelationalOperation: (2, 2)
+        Expression
+          Operand
+            Term
+              Factor
+                Identifier: (3, 2)
+        Operand
+          Term
+            Factor
+              Identifier: (3, 3)
+      Operator
+        Output
+          Expression
+            Operand
+              Term
+                Factor
+                  Identifier: (3, 3)
+  Operator
+    While_loop
+      Expression
+        Operand
+          Term
+            Factor
+              boolean: (1, 15)
+      Operator
+        Output
+          Expression
+            Operand
+              Term
+                Factor
+                  Identifier: (3, 1)
+  Operator
+    Output
+      Expression
+        Operand
+          Term
+            Factor
+              Identifier: (3, 2)

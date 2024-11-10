@@ -1,0 +1,18 @@
+{
+    x,y : %;;
+    let x = 1;
+    y = 2;
+    {
+        if x LT y then
+        z = x plus 3 mult y
+        else
+            z = y min 2
+        end_else
+        ;
+        do while x GT 0
+        x = x min 1
+        loop
+    };
+    z : !;;
+    z = 2.2;
+}

@@ -1,0 +1,18 @@
+{
+a,b,c : %;;
+t : !;;
+input( a b );
+    if a LT b then
+        b = a mult a
+    else
+        c = b
+    end_else;
+    for (;; c LT 100)
+        t = c div 1;
+    for (true; a LT ~10; b EQ c )
+        output (c);
+    do while true
+        output (a)
+    loop;
+    output (b);
+}
