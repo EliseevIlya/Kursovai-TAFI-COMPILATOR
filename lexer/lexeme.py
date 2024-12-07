@@ -7,8 +7,7 @@ class Lexer:
 
     def __init__(self):
         # Инициализируем таблицы
-        # TODO оптимизации
-        # TODO добавить что число может начинаться с - + и нормальную обработку ошибок ( пример 2.e2)
+
         self.keywords = {
             "let": 1, "if": 2, "then": 3, "else": 4, "end_else": 5, "for": 6,
             "do": 7, "while": 8, "input": 9, "output": 10, "%": 11, "!": 12, "$": 13, "loop": 14,
@@ -40,11 +39,9 @@ class Lexer:
             #outfile.write(f"(2, {self.delimiters.lookup(token)})  // {token}\n")
         elif is_valid_identifier(token):
             outfile.write(f"(3,{self.add_to_dict(token, self.identifiers)})")
-            #outfile.write(f"(3,{self.identifiers.add(token)})")
             #outfile.write(f"(3, {self.identifiers.add(token)})  // {token}\n")
         elif is_valid_number(token):
             outfile.write(f"(4,{self.add_to_dict(token, self.numbers)})")
-            #outfile.write(f"(4,{self.numbers.add(token)})")
             #outfile.write(f"(4, {self.numbers.add(token)})  // {token}\n")
         else:
             print(f"Ошибка: некорректный токен '{token}'")
@@ -154,5 +151,3 @@ class Lexer:
         reversed_dict = {v: k for k, v in self.numbers.items()}
         globals.reversed_numbers = reversed_dict
 
-        #print(globals.identifiers, 'reversed_identifiers')
-        #print(globals.reversed_numbers, 'reversed_numbers')

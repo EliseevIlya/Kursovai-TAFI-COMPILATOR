@@ -2,6 +2,7 @@
 a,b,c : %;;
 t : !;;
 input( a b );
+output (a plus b);
     if a LT b then
         b = a mult a
     else

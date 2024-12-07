@@ -1,6 +1,7 @@
 import globals
 from syntax.node import Node
 
+
 class ParserTree:
 
     def __init__(self, token_file):
@@ -50,13 +51,15 @@ class ParserTree:
         if self.current_token == (2, 14):  # '{'
             self.next_token()
             while self.current_token != (2, 15) and self.current_token:  # пока не встретили '}'
-                if self.current_token in [(2, 14), (1, 1), (1, 2), (1, 6), (1, 7), (1, 9), (1, 10)] or self.current_token[0] == 3:
+                if self.current_token in [(2, 14), (1, 1), (1, 2), (1, 6), (1, 7), (1, 9), (1, 10)] or \
+                        self.current_token[0] == 3:
                     non_empty = True
                     program_node.add_child(self.parse_operator())
                 if self.current_token == (2, 16):  # ';'
                     self.next_token()
                 else:
-                    raise SyntaxError(f"Ожидалась ';' в конце оператора или описания, но встречено {self.current_token} ")
+                    raise SyntaxError(
+                        f"Ожидалась ';' в конце оператора или описания, но встречено {self.current_token} ")
             if self.current_token == (2, 15):
                 if not non_empty:
                     raise SyntaxError("Ожидалось описание или оператор")
@@ -108,7 +111,7 @@ class ParserTree:
             declaration_node.add_child(self.parse_type())
             if self.current_token == (2, 16):  # ';'
                 self.next_token()
-                if self.current_token != (2, 16): # ';'
+                if self.current_token != (2, 16):  # ';'
                     dec_token = self.current_token
                     self.next_token()
                     self.parse_declaration(dec_token, False)
@@ -137,11 +140,11 @@ class ParserTree:
         """ <оператор>::= <составной> | <присваивания> | <условный> | <фиксированного_цикла> | <условного_цикла> | <ввода> | <вывода> """
         operator_node = Node("Operator")
         parse_map = {
-            (2, 14): self.parse_compound, # '{' — составной оператор
+            (2, 14): self.parse_compound,  # '{' — составной оператор
             (1, 1): self.parse_assignment,  # let
-            (1, 2): self.parse_conditional, # if
-            (1, 6): self.parse_fixed_loop, # for
-            (1, 7): self.parse_while_loop, # do
+            (1, 2): self.parse_conditional,  # if
+            (1, 6): self.parse_fixed_loop,  # for
+            (1, 7): self.parse_while_loop,  # do
             (1, 9): self.parse_input,  # input
             (1, 10): self.parse_output  # output
         }

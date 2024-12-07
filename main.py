@@ -12,8 +12,8 @@ if __name__ == "__main__":
     # Запуск лексера
     run_lexer("testProgram1.txt","output.txt")
     # Запуск синтаксического анализатора
-    run_parser("output.txt","output_parser.txt")\
-
+    run_parser("output.txt","output_parser.txt") \
+    # Запуск семантического анализатора
     run_semantic()
     print("Анализ завершен успешно. Время выполнения ", time.time() - start_time)
 

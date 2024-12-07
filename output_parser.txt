@@ -14,6 +14,17 @@ Program
       Identifier: (3, 1)
       Identifier: (3, 2)
   Operator
+    Output
+      Expression
+        AdditiveOperation: (2, 7)
+          Operand
+            Term
+              Factor
+                Identifier: (3, 1)
+          Term
+            Factor
+              Identifier: (3, 2)
+  Operator
     Conditional
       RelationalOperation: (2, 3)
         Expression
