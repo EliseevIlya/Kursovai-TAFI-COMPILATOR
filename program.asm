@@ -21,13 +21,36 @@ main:
 	leaq	40(%rsp), %rdx
 	movq	%rsi, %rcx
 	callq	*%rdi
-	movl	44(%rsp), %edx
-	addl	40(%rsp), %edx
-	movabsq	$printf_fmt, %rsi
-	movabsq	$printf, %rdi
+	leaq	52(%rsp), %rdx
 	movq	%rsi, %rcx
 	callq	*%rdi
+	movl	44(%rsp), %edx
+	addl	40(%rsp), %edx
+	movabsq	$printf_fmt, %rcx
+	movabsq	$printf, %rdi
+	callq	*%rdi
+	movl	44(%rsp), %eax
+	movl	%eax, %ecx
+	imull	%ecx, %ecx
+	movl	%ecx, 40(%rsp)
+	leal	(%rcx,%rax), %edx
+	movl	%edx, 48(%rsp)
+	cmpl	%ecx, %eax
+	jge	.LBB0_2
+	movl	44(%rsp), %eax
+	imull	%eax, %eax
+	movl	%eax, 40(%rsp)
+	jmp	.LBB0_3
+.LBB0_2:
+	movl	40(%rsp), %eax
+	addl	44(%rsp), %eax
+	movl	%eax, 48(%rsp)
+.LBB0_3:
 	movl	48(%rsp), %edx
+	cvtsi2ss	%rdx, %xmm0
+	divss	%xmm0, %xmm0
+	movss	%xmm0, 52(%rsp)
+	movabsq	$printf_fmt, %rsi
 	movq	%rsi, %rcx
 	callq	*%rdi
 	movl	44(%rsp), %edx

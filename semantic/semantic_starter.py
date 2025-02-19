@@ -16,6 +16,8 @@ def run_semantic(file='..//output_parser_dict.txt'):
         analyzer = SemanticAnalyzer(parse_tree)
         analyzer.analyze()
         print("Семантический анализ завершен успешно. Время выполнения ", time.time() - start_time + 0.001)
+        print(f"Формирование o файла прошло успешно. Данные записаны в ./program.o")
+
     except TypeError as e:
         print(f"Ошибка семантического анализа: {e}")
         exit()

@@ -5,3 +5,5 @@ identifiers = {}
 reversed_identifiers = {}
 reversed_numbers = {}
 identifiers_address = {}
+lexemes = []
+numbers_table_print = {}

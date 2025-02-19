@@ -13,6 +13,7 @@ Program
     Input
       Identifier: (3, 1)
       Identifier: (3, 2)
+      Identifier: (3, 4)
   Operator
     Output
       Expression
@@ -51,10 +52,14 @@ Program
         Assignment
           Identifier: (3, 3)
           Expression
-            Operand
+            AdditiveOperation: (2, 7)
+              Operand
+                Term
+                  Factor
+                    Identifier: (3, 2)
               Term
                 Factor
-                  Identifier: (3, 2)
+                  Identifier: (3, 1)
   Operator
     Fixed_loop
       RelationalOperation: (2, 3)
@@ -77,7 +82,7 @@ Program
                   Factor
                     Identifier: (3, 3)
                 Factor
-                  int: (4, 2)
+                  Identifier: (3, 3)
   Operator
     Fixed_loop
       Expression
@@ -95,7 +100,7 @@ Program
           Term
             Factor: (2, 13)
               Factor
-                int: (4, 3)
+                int: (4, 2)
       RelationalOperation: (2, 2)
         Expression
           Operand

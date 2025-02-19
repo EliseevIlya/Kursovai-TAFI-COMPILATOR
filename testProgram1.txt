@@ -1,15 +1,16 @@
 {
 a,b,c : %;;
 t : !;;
-input( a b );
+input( a b t);
 output (a plus b);
     if a LT b then
         b = a mult a
     else
-        c = b
+        c = b plus a
     end_else;
+
     for (;; c LT 100)
-        t = c div 1;
+        t = c div c;
     for (true; a LT ~10; b EQ c )
         output (c);
     do while true

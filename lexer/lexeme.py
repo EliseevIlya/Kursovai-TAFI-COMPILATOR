@@ -22,6 +22,7 @@ class Lexer:
         self.identifiers = {}
         self.numbers = {}
 
+
     def add_to_dict(self, lexeme, table):
         """Добавить лексему в таблицу, если её там ещё нет."""
         if lexeme not in table:
@@ -33,15 +34,19 @@ class Lexer:
         """Обработка токенов и запись их в выходной файл."""
         if self.keywords.get(token) is not None:
             outfile.write(f"(1,{self.keywords.get(token)})")
+            globals.lexemes.append((1, self.keywords.get(token)))
             #outfile.write(f"(1, {self.keywords.lookup(token)})  // {token}\n")
         elif self.delimiters.get(token) is not None:
             outfile.write(f"(2,{self.delimiters.get(token)})")
+            globals.lexemes.append((2, self.delimiters.get(token)))
             #outfile.write(f"(2, {self.delimiters.lookup(token)})  // {token}\n")
         elif is_valid_identifier(token):
             outfile.write(f"(3,{self.add_to_dict(token, self.identifiers)})")
+            globals.lexemes.append((3, self.add_to_dict(token, self.identifiers)))
             #outfile.write(f"(3, {self.identifiers.add(token)})  // {token}\n")
         elif is_valid_number(token):
             outfile.write(f"(4,{self.add_to_dict(token, self.numbers)})")
+            globals.lexemes.append((4, self.add_to_dict(token, self.numbers)))
             #outfile.write(f"(4, {self.numbers.add(token)})  // {token}\n")
         else:
             print(f"Ошибка: некорректный токен '{token}'")
@@ -150,4 +155,3 @@ class Lexer:
 
         reversed_dict = {v: k for k, v in self.numbers.items()}
         globals.reversed_numbers = reversed_dict
-

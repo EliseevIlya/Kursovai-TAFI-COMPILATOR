@@ -5,17 +5,33 @@ from syntax.node import Node
 class ParserTree:
 
     def __init__(self, token_file):
+        """"
         with open(token_file, 'r') as f:
             # Загружаем сразу все токены
             self.tokens = f.read()
+        """
+
         self.char_number = 0
         self.current_index = 0
         self.current_token = None
         self.previous_token = None
         self.keywords = {"%": 11, "!": 12, "$": 13}
+
+        self.tokens = globals.lexemes
+        self.tokens_counter = 0
+        self.tokens_len = len(self.tokens)
         self.next_token()
 
     def next_token(self):
+        if self.tokens_counter < self.tokens_len:
+            self.previous_token = self.current_token
+            self.current_token = self.tokens[self.tokens_counter]
+            self.tokens_counter += 1
+        else:
+            self.current_token = None
+
+    """"
+      def next_token(self):
         # Проверяем, не достигнут ли конец строки
         if self.current_index >= len(self.tokens):
             self.current_token = None
@@ -43,6 +59,7 @@ class ParserTree:
         # Преобразуем строку токена '(n, k)' в кортеж (n, k)
         self.previous_token = self.current_token  # Сохраняем предыдущий токен
         self.current_token = eval(token_str)  # Преобразуем строку в кортеж
+    """
 
     def parse(self):
         """ <программа>::= «{» {/ (<описание> | <оператор>) ; /} «}» """
@@ -51,8 +68,8 @@ class ParserTree:
         if self.current_token == (2, 14):  # '{'
             self.next_token()
             while self.current_token != (2, 15) and self.current_token:  # пока не встретили '}'
-                if self.current_token in [(2, 14), (1, 1), (1, 2), (1, 6), (1, 7), (1, 9), (1, 10)] or \
-                        self.current_token[0] == 3:
+                if (self.current_token in [(2, 14), (1, 1), (1, 2), (1, 6), (1, 7), (1, 9), (1, 10)] or
+                        self.current_token[0] == 3):
                     non_empty = True
                     program_node.add_child(self.parse_operator())
                 if self.current_token == (2, 16):  # ';'

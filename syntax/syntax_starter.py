@@ -10,7 +10,7 @@ def run_parser(input_file='..//output.txt', parser_file_out='..//output_parser.t
         parser = ParserTree(input_file)
         root_node = parser.parse()  # Вернём корневой узел
         print("Синтаксический анализ завершен успешно. Время выполнения ", time.time() - start_time + 0.0001)
-        print("Дерево узлов:")
+        #print("Дерево узлов:")
         print(root_node.print_tree())  # Печатаем дерево узлов
         #print(globals.identifier_type)
         globals.parse_tree = root_node.to_dict()
